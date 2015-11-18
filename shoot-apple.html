@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shoot Apples</title>
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+<style>
+    body {
+    overflow: hidden;
+    }
+    #arrow { 
+        position: absolute;
+        top: 180px;
+        left: 90px;
+        z-index: -1;
+       
+    }
+    #apple {
+    position: absolute;
+        right: 100px;
+        top: 170px;
+        
+    }
+    
+    #archer {
+    position: absolute;
+        top: 100;
+        left: 100;
+    }
+    
+    
+    
+    
+</style>
+</head>
+<body>
+
+<div class="container">
+   
+   <h1>Shoot the Apple</h1>
+   
+       <ul class="list-unstyled list-inline">
+           <li><button type="button" class="btn btn-success" id="shoot">Shoot!</button></li>
+           <li><button type="button" class="btn btn-primary" id="reset">Reset!</button></li>
+       </ul>
+       </div>
+    
+        
+    
+            <img src="img/archer.png" id="archer" height="243" width="200" alt="archer">
+               
+        
+        
+            <img src="img/arrow.png" id="arrow" width="70" alt="arrow">
+        
+        
+            <img src="img/apple.png" id="apple" width="50" alt="apple">
+        
+        
+        
+   
+    
+    
+    
+
+
+<script>
+/*===================
+    VARIABLES
+=====================*/
+    
+    var shoot_btn = document.getElementById("shoot");
+    var reset_btn = document.getElementById("reset");
+    var arrow = document.getElementById("arrow");
+    var target = document.getElementById("apple");
+    var timer;
+    var vanishtimer;
+    
+/*===================
+    FUNCTIONS
+=====================*/
+    
+    function explode () {
+    target.src = "img/explosion.gif";
+    }
+    
+    function vanish () {
+    target.style.opacity = "0";
+    }
+    
+    shoot_btn.onclick = function () {
+        arrow.style.left = "120%";
+        arrow.style.transition = "all 1s";
+        timer = setTimeout(explode, 550);
+        vanishtimer = setTimeout(vanish, 2000);
+    }
+    
+    reset_btn.onclick = function () {
+        clearTimeout(timer);
+        clearTimeout(vanishtimer);
+        arrow.style.transition = "none";
+        arrow.style.left = "90px";
+        target.src = "img/apple.png";
+        target.style.opacity = "1";
+    
+    }
+    
+</script>
+
+</body>
+</html>
